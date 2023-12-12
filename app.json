@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "jajabyka",
-    "slug": "jajabyka",
+    "name": "inteligent-flower-pot-app",
+    "slug": "inteligent-flower-pot-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
