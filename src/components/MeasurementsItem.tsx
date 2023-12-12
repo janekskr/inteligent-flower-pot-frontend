@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { Image } from "expo-image"
 
-import { View, Text } from 'components'
+import { View, Text } from './Themed'
 import blurhash from 'constant/blurhash'
 
 interface MeasurementsItemProps {

@@ -1,6 +1,6 @@
 import { Text as DefaultText, View as DefaultView } from 'react-native';
 
-import useThemeColor from 'hooks/useThemeColor';
+import {useThemeColor} from 'hooks';
 
 type ExtraProps = {
   weight?: "black" | "bold" | "italic" | "light" | "semibold" | "medium" | "extrabold" | "regular"
