@@ -24,7 +24,7 @@ export default function Modal({ setIsVisible, isVisible, style, title, descripti
         Alert.alert('Modal has been closed.');
         setIsVisible(!isVisible);
       }}>
-      <View style={[styles.container, { backgroundColor: "transparent" }, style]}> //  Ewentualnie można dać BlurView
+      <BlurView style={[styles.container, { backgroundColor: "transparent" }, style]}> 
         <View style={styles.modalView}>
           <Text style={styles.title} weight="bold">{title}</Text>
 
@@ -52,7 +52,7 @@ export default function Modal({ setIsVisible, isVisible, style, title, descripti
             <Text style={styles.buttonText} weight="semibold">Schowaj okno</Text>
           </Pressable>
         </View>
-      </View>
+      </BlurView>
     </DefaultModal>
   )
 }
