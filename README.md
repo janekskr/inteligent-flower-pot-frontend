@@ -38,4 +38,4 @@ git clone https://github.com/janekskr/inteligent-flower-pot-frontend.git
 [image-preview]: https://github.com/janekskr/inteligent-flower-pot-frontend/blob/main/src/assets/images/design.png
 [react-native]: https://reactnative.dev/
 [ts]: https://www.typescriptlang.org/
-[expo]: https://docs.expo.dev/
+[expo]: https://docs.dev/
