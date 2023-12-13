@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     measurementsItem: {
         flexDirection: "row",
         width: "100%",
-        gap: 20
+        gap: 20,
     },
     iconContainer: {
         aspectRatio: 1 / 1,
