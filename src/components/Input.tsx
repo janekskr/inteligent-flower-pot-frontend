@@ -8,10 +8,11 @@ interface InputProps {
     label: string;
     value: string;
     placeholder: string;
+    name: string;
     setValue: React.Dispatch<React.SetStateAction<UserData>>;
 }
 
-export default function Input({ label, placeholder, value, setValue }: InputProps) {
+export default function Input({ label, placeholder, value, name, setValue }: InputProps) {
     return (
         <View>
             <Text weight='medium'>{label}</Text>
@@ -20,11 +21,12 @@ export default function Input({ label, placeholder, value, setValue }: InputProp
             >
                 <TextInput
                     style={styles.input}
+                    id={name}
                     placeholder={placeholder}
                     placeholderTextColor="rgb(125,125,125)"
                     value={value}
                     autoCapitalize="none"
-                    onChangeText={(text: string) => setValue(prev => ({ ...prev, username: text.trim() }))}
+                    onChangeText={(text: string) => setValue(prev => ({ ...prev, [name]: text.trim() }))}
                 />
                 <AntDesign name="user" size={24} color="rgb(125,125,125)" />
             </View>
@@ -37,7 +39,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 5,
-        width: "90%",
         borderColor: '#EDEDED',
         borderWidth: 1,
         paddingHorizontal: 20,
