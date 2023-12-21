@@ -28,13 +28,13 @@ export default function SignIn() {
           value={credentials.username}
           setValue={setCredentials}
         />
-        <Input
+        {/* <Input
           label='Nazwa doniczki (opcjonalne)'
           placeholder='moja doniczka'
           name="plantName"
           value={credentials.plantName}
           setValue={setCredentials}
-        />
+        /> */}
 
         <View>
           <Text weight='medium'>Rodzaj rośliny</Text>
@@ -76,9 +76,6 @@ export default function SignIn() {
           style={styles.button}
           onPress={() => {
             if (credentials.flowerType && credentials.username !== "") {
-              if (credentials.plantName === "") {
-                setCredentials(prev => ({ ...prev, plantName: `${prev.flowerType} 1` }))
-              }
               signIn(credentials as UserData);
               router.replace('/');
             } else {
