@@ -2,14 +2,14 @@ import { TextInput, StyleSheet } from 'react-native'
 
 import { View, Text } from "./Themed"
 import { AntDesign } from '@expo/vector-icons';
-import { UserData } from 'lib/types';
+import { PlantInfo } from 'lib/types';
 
 interface InputProps {
     label: string;
     value: string;
     placeholder: string;
     name: string;
-    setValue: React.Dispatch<React.SetStateAction<UserData>>;
+    setValue: React.Dispatch<React.SetStateAction<PlantInfo>>;
 }
 
 export default function Input({ label, placeholder, value, name, setValue }: InputProps) {

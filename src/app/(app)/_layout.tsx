@@ -35,7 +35,7 @@ export default function AppLayout() {
             headerTransparent: true,
             headerTitle: () => (
               <Text style={{ fontSize: 25, paddingVertical: 25, marginLeft: 15 }} weight="bold">
-                Witaj, {session.username} 👋
+                Witaj 👋
               </Text>
             ),
             headerShadowVisible: false,

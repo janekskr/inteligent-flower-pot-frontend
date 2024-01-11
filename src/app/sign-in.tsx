@@ -5,14 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useSession } from 'hooks/useSession';
 import { PlantImage, Text, View, Input } from "components"
-import { UserData } from 'lib/types';
+import { PlantInfo } from 'lib/types';
 import { AntDesign } from '@expo/vector-icons';
 
 export default function SignIn() {
-  const [credentials, setCredentials] = useState<UserData>({
-    flowerType: "normal",
-    username: "",
-    plantName: ""
+  const [credentials, setCredentials] = useState<PlantInfo>({
+    plant_specie: "Kawa",
+    plant_name: ""
   })
   const { signIn } = useSession();
 
@@ -22,26 +21,19 @@ export default function SignIn() {
         <View style={styles.container}>
         <Text style={styles.headerText} weight="semibold">Dodaj doniczkę</Text>
         <Input
-          label='Imię'
-          placeholder='Jan'
-          name="username"
-          value={credentials.username}
-          setValue={setCredentials}
-        />
-        {/* <Input
           label='Nazwa doniczki (opcjonalne)'
           placeholder='moja doniczka'
           name="plantName"
-          value={credentials.plantName}
+          value={credentials.plant_name}
           setValue={setCredentials}
-        /> */}
+        />
 
         <View>
           <Text weight='medium'>Rodzaj rośliny</Text>
           <View style={styles.flowerContainer}>
-            <Pressable onPress={() => setCredentials(prev => ({ ...prev, flowerType: "normal" }))}>
+            <Pressable onPress={() => setCredentials(prev => ({ ...prev, plant_specie: "Kawa" }))}>
               <PlantImage
-                type='normal'
+                type='Kawa'
                 style={{
                   imageContainerStyle: styles.imageContainerStyle,
                   titleStyle: styles.titleStyle,
@@ -49,14 +41,14 @@ export default function SignIn() {
                     paddingHorizontal: 25,
                     borderWidth: 4,
                     borderRadius: 20,
-                    borderColor: credentials.flowerType === "normal" ? "rgb(22 101 52)" : "transparent"
+                    borderColor: credentials.plant_specie === "Kawa" ? "rgb(22 101 52)" : "transparent"
                   }
                 }}
               />
             </Pressable>
             <Pressable onPress={() => setCredentials(prev => ({ ...prev, flowerType: "cactus" }))}>
               <PlantImage
-                type="cactus"
+                type="Kaktus"
                 style={{
                   imageContainerStyle: styles.imageContainerStyle,
                   titleStyle: styles.titleStyle,
@@ -64,7 +56,7 @@ export default function SignIn() {
                     paddingHorizontal: 25,
                     borderWidth: 4,
                     borderRadius: 20,
-                    borderColor: credentials.flowerType === "cactus" ? "rgb(22 101 52)" : "transparent"
+                    borderColor: credentials.plant_specie === "Kaktus" ? "rgb(22 101 52)" : "transparent"
                   }
                 }}
               />
@@ -75,8 +67,8 @@ export default function SignIn() {
         <Pressable
           style={styles.button}
           onPress={() => {
-            if (credentials.flowerType && credentials.username !== "") {
-              signIn(credentials as UserData);
+            if (credentials.plant_specie) {
+              signIn(credentials as PlantInfo);
               router.replace('/');
             } else {
               Alert.alert("Błąd", "Proszę wypełnić wszystkie pola")

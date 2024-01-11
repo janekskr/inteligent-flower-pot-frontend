@@ -1,7 +1,12 @@
-export type Flower = "cactus" | "normal"
+export type Flower = "Kaktus" | "Kawa"
+
+export type PlantInfo = {
+    plant_name: string,
+    plant_specie: Flower
+}
 
 export type UserData = {
-    username: string,
-    flowerType: Flower,
-    plantName: string
-}
+    temperature: number,
+    air_humidity: number, 
+    water_level: number
+} & PlantInfo
