@@ -6,7 +6,7 @@ export type PlantInfo = {
 }
 
 export type UserData = PlantInfo & {
-    ground_humidity: number // %
+    ground_humidity: number //
     air_humidity: number // %
     water_level: boolean
     temperature: number // C

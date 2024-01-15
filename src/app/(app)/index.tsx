@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import { View, MeasurementsItem, PlantImage } from "components"
 import { days } from "constant"
 import { useSession } from "hooks";
+import getScale from "hooks/getScale";
 
 export default function HomeScreen() {
   const { session } = useSession()
@@ -14,13 +15,13 @@ export default function HomeScreen() {
           <MeasurementsItem
             name="waterHumidity"
             label="Wilgotność powietrza"
-            measurement={`${session?.ground_humidity}%`}
+            measurement={session?.air_humidity + "%"}
           />
 
           <MeasurementsItem
             name="groundHumidity"
             label="Wilgotność gleby"
-            measurement={`${session?.ground_humidity}%`}
+            measurement={getScale(session?.ground_humidity as number)}
           />
 
           <MeasurementsItem
@@ -30,7 +31,7 @@ export default function HomeScreen() {
           />
 
           <MeasurementsItem
-            name="temperature"
+            name="lastWatering"
             label="Ostatnie podlewanie"
             measurement={`${session?.last_watering && days[session?.last_watering.getDay()]}`}
           />
@@ -38,7 +39,7 @@ export default function HomeScreen() {
           <MeasurementsItem
             name="waterLevel"
             label="Niski poziom wody"
-            measurement={`${session?.water_level}`}
+            measurement={`${session?.water_level? "Nie": "Tak"}`}
           />
         </View>
       </ScrollView>

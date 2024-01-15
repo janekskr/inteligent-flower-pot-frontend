@@ -6,7 +6,7 @@ import {blurhash} from 'constant'
 
 interface MeasurementsItemProps {
     label: string,
-    measurement: string
+    measurement: string | undefined
     name: Name
 }
 
@@ -20,11 +20,11 @@ export default function MeasurementsItem({ label, measurement, name }: Measureme
         },
         {
             name: "waterHumidity",
-            source: require("assets/images/icons/humidity.png")
+            source: require("assets/images/icons/water-humidity.png")
         },
         {
             name: "groundHumidity",
-            source: require("assets/images/icons/humidity.png")
+            source: require("assets/images/icons/ground-humidity.png")
         },
         {
             name: "waterLevel",
@@ -50,7 +50,7 @@ export default function MeasurementsItem({ label, measurement, name }: Measureme
                 />
             </View>
             <View>
-                <Text style={styles.measurement} weight="bold">{measurement}</Text>
+                <Text style={styles.measurement} weight="bold">{measurement ?? "Brak danych!"}</Text>
                 <Text>{label}</Text>
             </View>
         </View>

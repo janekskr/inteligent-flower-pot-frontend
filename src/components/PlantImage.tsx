@@ -23,27 +23,27 @@ export default function PlantImage({ type, style }: PlantImageProps) {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const { session } = useSession()
 
-  const flowerType = type ?? session?.flowerType
+  const flowerType = type ?? session?.plant_specie
 
   return (
     <>
       <Modal
         isVisible={isVisible}
         setIsVisible={setIsVisible}
-        title={`Informacje o nawadnianiu ${flowerType === "cactus" ? "kaktusa" : "kwiatków"}`}
-        description={flowerType === "cactus" ? "Kaktus to roślina nawadniana rzadziej niż zwykłe rośliny" : "Zwykłe rośliny są nawadniane częściej niż kaktusy"}
-        extraInfo={flowerType === "cactus" ? "1 raz na 2-3 tygodnie" : "1-4 razy tygodniowo"}
+        title={`Informacje o nawadnianiu ${flowerType === "Kaktus" ? "kaktusa" : "kwiatków"}`}
+        description={flowerType === "Kaktus" ? "Kaktus to roślina nawadniana rzadziej niż zwykłe rośliny" : "Kawa jest nawadniana częściej niż kaktusy"}
+        extraInfo={flowerType === "Kaktus" ? "1 raz na miesiąc" : "1-4 razy tygodniowo"}
       />
 
       <View style={[styles.imageContainer, style?.imageContainerStyle]}>
         <View style={[styles.textContainer, style?.textContainerStyle]}>
-          <Text style={[styles.title, style?.titleStyle]} weight="bold">{flowerType === "cactus" ? "Kaktus" : "Zwykła roślina"}</Text>
+          <Text style={[styles.title, style?.titleStyle]} weight="bold">{flowerType === "Kaktus" ? "Kaktus" : "Zwykła roślina"}</Text>
         </View>
         <Image
           style={styles.image}
-          source={flowerType === "cactus" ? require("assets/images/categories/cactus.png") : require("assets/images/categories/flower.png")}
+          source={flowerType === "Kaktus" ? require("assets/images/categories/cactus.png") : require("assets/images/categories/coffee.png")}
           contentFit="contain"
-          placeholder={blurhash[`${flowerType === "cactus" ? "cactus" : "flower"}Blurhash`]}
+          placeholder={blurhash[`${flowerType === "Kaktus" ? "cactus" : "flower"}Blurhash`]}
           transition={1000}
         />
 
