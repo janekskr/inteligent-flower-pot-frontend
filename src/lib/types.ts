@@ -5,8 +5,10 @@ export type PlantInfo = {
     plant_specie: Flower
 }
 
-export type UserData = {
-    temperature: number,
-    air_humidity: number, 
-    water_level: number
-} & PlantInfo
+export type UserData = PlantInfo & {
+    ground_humidity: number // %
+    air_humidity: number // %
+    water_level: boolean
+    temperature: number // C
+    last_watering: Date
+}

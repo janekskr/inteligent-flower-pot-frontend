@@ -21,7 +21,7 @@ export default function SignIn() {
         <View style={styles.container}>
         <Text style={styles.headerText} weight="semibold">Dodaj doniczkę</Text>
         <Input
-          label='Nazwa doniczki (opcjonalne)'
+          label='Nazwa doniczki'
           placeholder='moja doniczka'
           name="plantName"
           value={credentials.plant_name}

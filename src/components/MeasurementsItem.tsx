@@ -2,27 +2,37 @@ import { StyleSheet } from 'react-native'
 import { Image } from "expo-image"
 
 import { View, Text } from './Themed'
-import blurhash from 'constant/blurhash'
+import {blurhash} from 'constant'
 
 interface MeasurementsItemProps {
     label: string,
     measurement: string
-    name: "temperature" | "humidity" | "water"
+    name: Name
 }
 
+type Name = "temperature" | "waterHumidity" | "groundHumidity" | "waterLevel" | "lastWatering"
+
 export default function MeasurementsItem({ label, measurement, name }: MeasurementsItemProps) {
-    const images = [
+    const images: { name: Name, source: any }[] = [
         {
             name: "temperature",
             source: require("assets/images/icons/temperature.png")
         },
         {
-            name: "humidity",
+            name: "waterHumidity",
             source: require("assets/images/icons/humidity.png")
         },
         {
-            name: "water",
+            name: "groundHumidity",
+            source: require("assets/images/icons/humidity.png")
+        },
+        {
+            name: "waterLevel",
             source: require("assets/images/icons/water.png")
+        },
+        {
+            name: "lastWatering",
+            source: require("assets/images/icons/watering.png")
         }
     ]
 
