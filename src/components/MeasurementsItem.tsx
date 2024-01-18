@@ -2,27 +2,37 @@ import { StyleSheet } from 'react-native'
 import { Image } from "expo-image"
 
 import { View, Text } from './Themed'
-import blurhash from 'constant/blurhash'
+import {blurhash} from 'constant'
 
 interface MeasurementsItemProps {
     label: string,
-    measurement: string
-    name: "temperature" | "humidity" | "water"
+    measurement: string | undefined
+    name: Name
 }
 
+type Name = "temperature" | "waterHumidity" | "groundHumidity" | "waterLevel" | "lastWatering"
+
 export default function MeasurementsItem({ label, measurement, name }: MeasurementsItemProps) {
-    const images = [
+    const images: { name: Name, source: any }[] = [
         {
             name: "temperature",
             source: require("assets/images/icons/temperature.png")
         },
         {
-            name: "humidity",
-            source: require("assets/images/icons/humidity.png")
+            name: "waterHumidity",
+            source: require("assets/images/icons/water-humidity.png")
         },
         {
-            name: "water",
+            name: "groundHumidity",
+            source: require("assets/images/icons/ground-humidity.png")
+        },
+        {
+            name: "waterLevel",
             source: require("assets/images/icons/water.png")
+        },
+        {
+            name: "lastWatering",
+            source: require("assets/images/icons/watering.png")
         }
     ]
 
@@ -40,7 +50,7 @@ export default function MeasurementsItem({ label, measurement, name }: Measureme
                 />
             </View>
             <View>
-                <Text style={styles.measurement} weight="bold">{measurement}</Text>
+                <Text style={styles.measurement} weight="bold">{measurement ?? "Brak danych!"}</Text>
                 <Text>{label}</Text>
             </View>
         </View>
