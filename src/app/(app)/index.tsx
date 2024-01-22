@@ -5,8 +5,10 @@ import { days } from "constant"
 import { useSession } from "hooks";
 import getScale from "hooks/getScale";
 
+
 export default function HomeScreen() {
   const { session } = useSession()
+
   return (
     <View style={styles.container}>
       <PlantImage />
