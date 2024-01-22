@@ -1,9 +1,10 @@
 import { useFonts } from 'expo-font';
 import { Slot, SplashScreen } from 'expo-router';
-import { SessionProvider } from 'hooks/useSession';
+import { SessionProvider, sessionStore } from 'hooks/useSession';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { Provider } from 'jotai';
 
 export {
     ErrorBoundary,
@@ -44,8 +45,10 @@ export default function RootLayout() {
 
     return (
         <SessionProvider>
-            <StatusBar style="dark" />
-            <Slot />
+            <Provider store={sessionStore}>
+                <StatusBar style="dark" />
+                <Slot />
+            </Provider>
         </SessionProvider>
     );
 }

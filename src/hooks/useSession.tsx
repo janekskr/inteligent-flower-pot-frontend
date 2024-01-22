@@ -9,6 +9,7 @@ import { useNotification } from "hooks/useNotification";
 import BASE_URL from 'lib/BASE_URL';
 import { PlantInfo, UserData } from "lib/types";
 import { schedulePushNotification } from "lib/handleNotification"
+import { useStore, atom, useAtom } from 'jotai';
 
 interface AuthContextProps {
     isLoading: boolean
@@ -27,12 +28,16 @@ Notifications.setNotificationHandler({
 
 const BACKGROUND_FETCH_TASK = "background-fetch"
 
-const sessionRef: {current: UserData | null} = { current: null };
+// const sessionRef: {current: UserData | null} = { current: null };
+export const sessionStore = useStore()
+const sessionAtom = atom<UserData | null>(null)
 
 TaskManager.defineTask(BACKGROUND_FETCH_TASK, async() => {
   try {
     const {data} = await axios.get<UserData | null>(BASE_URL + "/plants/get_info/")
-    sessionRef.current = data
+
+    sessionStore.set(sessionAtom, data)
+
     if(!data?.water_level) {
       await schedulePushNotification()
     }
@@ -57,9 +62,9 @@ async function unregisterBackgroundFetchAsync() {
 export const AuthContext = createContext({} as AuthContextProps)
 
 export function SessionProvider({children}: React.PropsWithChildren) {
-  const [session, setSession] = useState<UserData | null>(null)
+  const [session, setSession] = useAtom(sessionAtom)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  
+  console.log(session)
     const signIn = async (data: PlantInfo) => {
         await axios.post<PlantInfo>(BASE_URL + "/plants/create_plant/", data)
         getInfo()
@@ -95,10 +100,6 @@ export function SessionProvider({children}: React.PropsWithChildren) {
       useNotification()
       
     }, [])
-
-    useEffect(() => {
-      setSession(sessionRef.current);
-    }, [sessionRef.current]);
 
     return (
       <AuthContext.Provider
