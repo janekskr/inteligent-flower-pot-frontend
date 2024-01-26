@@ -37,7 +37,7 @@ export default function PlantImage({ type, style }: PlantImageProps) {
 
       <View style={[styles.imageContainer, style?.imageContainerStyle]}>
         <View style={[styles.textContainer, style?.textContainerStyle]}>
-          <Text style={[styles.title, style?.titleStyle]} weight="bold">{flowerType === "Kaktus" ? "Kaktus" : "Zwykła roślina"}</Text>
+          <Text style={[styles.title, style?.titleStyle]} weight="bold">{flowerType === "Kaktus" ? "Kaktus" : "Kawa"}</Text>
         </View>
         <Image
           style={styles.image}

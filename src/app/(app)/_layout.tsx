@@ -35,7 +35,7 @@ export default function AppLayout() {
             headerTransparent: true,
             headerTitle: () => (
               <Text style={{ fontSize: 25, paddingVertical: 25, marginLeft: 15 }} weight="bold">
-                Witaj 👋
+                {session.plant_name} 🌱
               </Text>
             ),
             headerShadowVisible: false,
@@ -65,7 +65,7 @@ export default function AppLayout() {
             ),
           }}
         />
-        <Stack.Screen name="modal"  options={{ presentation: 'modal', title: "Opcje" }} />
+        <Stack.Screen name="modal"  options={{ presentation: 'modal', title: "Edytuj doniczkę" }} />
       </Stack>
       </>
   );

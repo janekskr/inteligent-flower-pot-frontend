@@ -1,13 +1,13 @@
 import { ScrollView, StyleSheet } from "react-native";
 
 import { View, MeasurementsItem, PlantImage } from "components"
-import { days } from "constant"
-import { useSession } from "hooks";
+import { useNotification, useSession } from "hooks";
 import getScale from "hooks/getScale";
 
 export default function HomeScreen() {
+  useNotification()
   const { session } = useSession()
-  console.log
+  
   return (
     <View style={styles.container}>
       <PlantImage />

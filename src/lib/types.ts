@@ -1,4 +1,4 @@
-export type Flower = "Kaktus" | "Kawa"
+export type Flower = "Kaktus" | "kawa"
 
 export type PlantInfo = {
     plant_name: string,

@@ -10,11 +10,11 @@ import { AntDesign } from '@expo/vector-icons';
 
 export default function SignIn() {
   const [credentials, setCredentials] = useState<PlantInfo>({
-    plant_specie: "Kawa",
+    plant_specie: "kawa",
     plant_name: ""
   })
   const { signIn } = useSession();
-
+  console.log(credentials)
   return (
     <SafeAreaView>
       <ScrollView>
@@ -23,7 +23,7 @@ export default function SignIn() {
         <Input
           label='Nazwa doniczki'
           placeholder='moja doniczka'
-          name="plantName"
+          name="plant_name"
           value={credentials.plant_name}
           setValue={setCredentials}
         />
@@ -31,9 +31,9 @@ export default function SignIn() {
         <View>
           <Text weight='medium'>Rodzaj rośliny</Text>
           <View style={styles.flowerContainer}>
-            <Pressable onPress={() => setCredentials(prev => ({ ...prev, plant_specie: "Kawa" }))}>
+            <Pressable onPress={() => setCredentials(prev => ({ ...prev, plant_specie: "kawa" }))}>
               <PlantImage
-                type='Kawa'
+                type='kawa'
                 style={{
                   imageContainerStyle: styles.imageContainerStyle,
                   titleStyle: styles.titleStyle,
@@ -41,12 +41,12 @@ export default function SignIn() {
                     paddingHorizontal: 25,
                     borderWidth: 4,
                     borderRadius: 20,
-                    borderColor: credentials.plant_specie === "Kawa" ? "rgb(22 101 52)" : "transparent"
+                    borderColor: credentials.plant_specie === "kawa" ? "rgb(22 101 52)" : "transparent"
                   }
                 }}
               />
             </Pressable>
-            <Pressable onPress={() => setCredentials(prev => ({ ...prev, flowerType: "cactus" }))}>
+            <Pressable onPress={() => setCredentials(prev => ({ ...prev, plant_specie: "Kaktus" }))}>
               <PlantImage
                 type="Kaktus"
                 style={{
