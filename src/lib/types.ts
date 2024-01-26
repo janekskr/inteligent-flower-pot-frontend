@@ -10,5 +10,5 @@ export type UserData = PlantInfo & {
     air_humidity: number // %
     water_level: boolean
     temperature: number // C
-    last_watering: Date
+    last_watering: string // date
 }

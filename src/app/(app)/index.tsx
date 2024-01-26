@@ -5,10 +5,9 @@ import { days } from "constant"
 import { useSession } from "hooks";
 import getScale from "hooks/getScale";
 
-
 export default function HomeScreen() {
   const { session } = useSession()
-
+  console.log
   return (
     <View style={styles.container}>
       <PlantImage />
@@ -35,7 +34,7 @@ export default function HomeScreen() {
           <MeasurementsItem
             name="lastWatering"
             label="Ostatnie podlewanie"
-            measurement={`${session?.last_watering && days[session?.last_watering.getDay()]}`}
+            measurement={`${session?.last_watering && new Date(session.last_watering).toLocaleDateString(undefined)}`}
           />
 
           <MeasurementsItem
